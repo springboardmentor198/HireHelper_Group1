@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();  
 const multer = require("multer"); // Added Multer
 const path = require("path");     // Added Path for file extensions
+const mongoose = require("mongoose");
 
 const Task = require("../models/Task");
 const authMiddleware = require("../middleware/authMiddleware");
@@ -35,7 +36,7 @@ router.post("/", authMiddleware, upload.single("taskImage"), async (req, res) =>
       date: req.body.date,         
       time: req.body.time,         
       description: req.body.description,
-      // ✅ Save the file path to the database
+      //Save the file path to the database
       taskImage: req.file ? `/uploads/${req.file.filename}` : null,
       owner: req.userId  
     });
@@ -57,6 +58,7 @@ router.post("/", authMiddleware, upload.single("taskImage"), async (req, res) =>
 // Get ALL tasks for the Feed
 router.get("/", authMiddleware, async (req, res) => {
   try {
+    const ownerId = new mongoose.Types.ObjectId(req.userId);
     // .sort({ createdAt: -1 }) puts the newest tasks at the top!
     const tasks = await Task.find().sort({ createdAt: -1 }); 
     res.json(tasks);
@@ -66,10 +68,34 @@ router.get("/", authMiddleware, async (req, res) => {
   }
 });
 
+// Feed tasks (exclude current user's tasks AND only show "open" tasks)
+router.get("/feed", authMiddleware, async (req, res) => {
+  try {
+    const ownerId = new mongoose.Types.ObjectId(req.userId);
+    
+    //  status: "open" TO THE FILTER
+    const tasks = await Task.find({ 
+      owner: { $ne: ownerId }, 
+      status: "open" 
+    }).sort({ createdAt: -1 });
+    
+    res.json(tasks);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: "Server error" });
+  }
+});
+
 //my tasks
 router.get("/my", authMiddleware, async (req, res) => {
-  const tasks = await Task.find({ owner: req.userId });
-  res.json(tasks);
+  try {
+    const ownerId = new mongoose.Types.ObjectId(req.userId);
+    const tasks = await Task.find({ owner: ownerId }).sort({ createdAt: -1 });
+    res.json(tasks);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: "Server error" });
+  }
 });
 
 //delete task
