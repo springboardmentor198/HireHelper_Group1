@@ -45,7 +45,9 @@ app.use("/api/tasks", taskRoutes);
 
 const requestRoutes = require("./routes/requestRoutes");
 app.use("/requests", requestRoutes);
-
+// FOR NOTIFICATIONS
+const notificationRoutes = require("./routes/notificationRoutes");
+app.use("/notifications", notificationRoutes);
 // --- START SERVER ---
 app.listen(process.env.PORT, () => {
   console.log("Server running on port " + process.env.PORT);
