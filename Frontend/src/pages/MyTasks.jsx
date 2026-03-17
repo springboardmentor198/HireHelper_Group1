@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useEffect, useRef, useState } from "react"
 import axios from "axios"
 import { FaCalendarAlt, FaMapMarkerAlt, FaTrash, FaArrowLeft } from "react-icons/fa"
@@ -324,6 +325,8 @@ export default function MyTasks() {
   )
 }
 =======
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
 import { useState, useEffect } from "react"
 import axios from "axios"
 // 1. Added FaTrash here
@@ -538,5 +541,9 @@ const descStyle = { fontSize:"14px", color:"#64748b", marginBottom:"15px", heigh
 const infoRow = { display:"flex", alignItems:"center", gap:"8px", color:"#64748b", fontSize:"13px", marginBottom:"8px" }
 const buttonStyle = { width:"180px", padding:"8px", borderRadius:"8px", border:"none", background:"#f59e0b", color:"white", fontWeight:"600", cursor:"pointer" }
 
+<<<<<<< HEAD
 export default AddTask;
 >>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
+=======
+export default AddTask;
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18

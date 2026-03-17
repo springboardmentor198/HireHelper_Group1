@@ -132,6 +132,7 @@ function Home() {
       </section>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       {/* ================= TOP HELPERS ================= */}
       <section className="workers-section">
         <h2>Top Rated Helpers</h2>
@@ -167,6 +168,8 @@ function Home() {
         </div>
       </section>
 =======
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
 
       <div className="workers-grid">
   {[
@@ -199,7 +202,10 @@ function Home() {
 
   ))}
 </div>
+<<<<<<< HEAD
 >>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
       {/* ================= FOOTER ================= */}
       <footer className="footer">
 

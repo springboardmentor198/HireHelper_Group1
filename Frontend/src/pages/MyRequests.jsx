@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState, useEffect } from "react"
 import axios from "axios"
 
@@ -285,6 +286,8 @@ export default function MyRequests() {
   )
 }
 =======
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
 import { FaMapMarkerAlt, FaCalendarAlt, FaUser } from "react-icons/fa"
 
 function MyRequests() {
@@ -464,5 +467,9 @@ const buttonStyle = {
   cursor:"pointer"
 }
 
+<<<<<<< HEAD
 export default MyRequests
 >>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
+=======
+export default MyRequests
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18

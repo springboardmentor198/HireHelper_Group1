@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState, useEffect, useRef } from "react"
 =======
 import { useState, useEffect } from "react"
 >>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
+=======
+import { useState, useEffect } from "react"
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
 import axios from "axios"
 import {
   FaSearch,
@@ -11,10 +15,14 @@ import {
   FaCalendarAlt,
   FaUser,
 <<<<<<< HEAD
+<<<<<<< HEAD
   FaTrash
 =======
   FaTrash 
 >>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
+=======
+  FaTrash 
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
 } from "react-icons/fa"
 
 const dummyTasks = [
@@ -53,6 +61,7 @@ const dummyTasks = [
   }
 ]
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 const dummyNotifications = [
   {
@@ -107,11 +116,17 @@ export default function Feed() {
   const [tasks, setTasks] = useState(dummyTasks)
   const [loading, setLoading] = useState(true)
 >>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
+=======
+export default function Feed() {
+  const [tasks, setTasks] = useState(dummyTasks)
+  const [loading, setLoading] = useState(true)
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
         const token = localStorage.getItem("token")
+<<<<<<< HEAD
 <<<<<<< HEAD
         const response = await axios.get("http://localhost:5000/api/tasks/feed", {
           headers: { Authorization: `Bearer ${token}` }
@@ -184,6 +199,8 @@ export default function Feed() {
     } catch (error) {
       console.error("Error deleting task:", error)
 =======
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
         
         // 1. Decode your token to find out your specific User ID
         let myUserId = null;
@@ -240,7 +257,10 @@ export default function Feed() {
 
     } catch (error) {
       console.error(" Error deleting task:", error)
+<<<<<<< HEAD
 >>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
       if (error.response && error.response.status === 401) {
         alert("You are not authorized to delete someone else's task!")
       } else {
@@ -249,6 +269,7 @@ export default function Feed() {
     }
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   //  FUNCTION ADDED HERE TO HANDLE THE REQUEST
   const handleOfferHelp = async (taskId) => {
@@ -279,6 +300,8 @@ export default function Feed() {
 
 =======
 >>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
   return (
     <div style={{ background: "#f8fafc", minHeight: "100vh", padding: "40px" }}>
 
@@ -295,6 +318,7 @@ export default function Feed() {
             <input placeholder="Search tasks..." style={{ border: "none", outline: "none", background: "transparent", width: "100%" }} />
           </div>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
           {/* NOTIFICATION BELL */}
           <div style={{ position: "relative" }} ref={notifRef}>
@@ -432,20 +456,28 @@ export default function Feed() {
           <div style={{ background: "#fef3c7", padding: "10px", borderRadius: "50%" }}>
             <FaBell color="#f59e0b" />
 >>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
+=======
+          <div style={{ background: "#fef3c7", padding: "10px", borderRadius: "50%" }}>
+            <FaBell color="#f59e0b" />
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
           </div>
         </div>
       </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       {/* TASK GRID */}
 =======
 >>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
       {loading ? (
         <p style={{ fontSize: "18px", color: "#64748b" }}>Syncing live tasks... ⏳</p>
       ) : (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "30px" }}>
           {tasks.map(task => (
             <div key={task._id} style={cardStyle}>
+<<<<<<< HEAD
 <<<<<<< HEAD
               <div style={{ position: "relative" }}>
                 <img
@@ -459,6 +491,8 @@ export default function Feed() {
                   alt="task"
                   style={{ width: "100%", height: "180px", objectFit: "cover" }}
 =======
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
 
               {/* IMAGE LOGIC UPDATED HERE */}
               <div style={{ position: "relative" }}>
@@ -472,7 +506,10 @@ export default function Feed() {
                   } 
                   alt="task" 
                   style={{ width: "100%", height: "180px", objectFit: "cover" }} 
+<<<<<<< HEAD
 >>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
                 />
                 <span style={badgeStyle}>{task.category}</span>
               </div>
@@ -484,6 +521,7 @@ export default function Feed() {
                 <div style={{ flexGrow: 1 }}>
                   <div style={infoRow}><FaMapMarkerAlt size={13} /><span>{task.location}</span></div>
                   <div style={infoRow}><FaCalendarAlt size={13} /><span>{task.date} • {task.time}</span></div>
+<<<<<<< HEAD
 <<<<<<< HEAD
                   <div style={infoRow}><FaUser size={13} /><span>{task.user || "Community Member"}</span></div>
                 </div>
@@ -500,6 +538,8 @@ export default function Feed() {
 
                   <button
 =======
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
                   <div style={infoRow}><FaUser size={13} /><span>{task.owner?.name || task.user || "Community Member"}</span></div>
                 </div>
 
@@ -509,7 +549,10 @@ export default function Feed() {
                   </button>
                   
                   <button 
+<<<<<<< HEAD
 >>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
                     onClick={() => handleDelete(task._id)}
                     style={{ background: "transparent", border: "none", color: "#ef4444", cursor: "pointer", fontSize: "18px", padding: "5px" }}
                     title="Delete Task"
