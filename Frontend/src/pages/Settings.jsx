@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState, useRef } from "react";
 
 const Settings = () => {
@@ -914,6 +915,8 @@ const Settings = () => {
       </div>
     </>
 =======
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
 import React, { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 
@@ -1101,7 +1104,10 @@ const Settings = () => {
       </div>
 
     </div>
+<<<<<<< HEAD
 >>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
   );
 };
 

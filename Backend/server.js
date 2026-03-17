@@ -9,7 +9,10 @@ const app = express();
 app.use(cors()); 
 app.use(express.json());
 
+<<<<<<< HEAD
 // ✅ THIS IS THE MAGIC LINE YOU NEEDED:
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
 // It tells Express to let the frontend access images inside the "uploads" folder
 app.use("/uploads", express.static("uploads"));
 
@@ -49,5 +52,9 @@ app.use("/requests", requestRoutes);
 // --- START SERVER ---
 app.listen(process.env.PORT, () => {
   console.log("Server running on port " + process.env.PORT);
+<<<<<<< HEAD
 });
 
+=======
+});
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18

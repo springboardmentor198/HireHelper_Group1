@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState, useEffect } from "react"
 import axios from "axios"
 
@@ -373,6 +374,8 @@ export default function Request() {
   )
 }
 =======
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
 import { useState } from "react"
 import { FaMapMarkerAlt, FaCalendarAlt, FaUser, FaCheck, FaTimes } from "react-icons/fa"
 
@@ -615,5 +618,9 @@ function getStatusColor(status){
   if(status === "Rejected") return "#ef4444" 
   return "#64748b"
 }
+<<<<<<< HEAD
 export default Requests
 >>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
+=======
+export default Requests
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
