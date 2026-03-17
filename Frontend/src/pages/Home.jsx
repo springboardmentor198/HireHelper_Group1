@@ -131,6 +131,45 @@ function Home() {
         </div>
       </section>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+      {/* ================= TOP HELPERS ================= */}
+      <section className="workers-section">
+        <h2>Top Rated Helpers</h2>
+        <p className="workers-subtitle">
+          Verified professionals with great ratings — ready for quick bookings.
+        </p>
+
+        <div className="workers-grid">
+          {[
+            { name: "Rani", job: "Electrician", rating: "4.8", exp: "5 Years", img: w1 },
+            { name: "Ram", job: "Plumber", rating: "4.6", exp: "3 Years", img: w2 },
+            { name: "Sai", job: "Driver", rating: "4.9", exp: "7 Years", img: w3 }
+          ].map((worker, index) => (
+            <div key={index} className="worker-card">
+              <div className="worker-img-wrapper">
+                <img src={worker.img} alt={worker.name} className="worker-img" />
+                <span className="verified-badge">Verified</span>
+                <span className="worker-rating">⭐ {worker.rating}</span>
+              </div>
+
+              <div className="worker-body">
+                <div className="worker-title">
+                  <h3>{worker.name}</h3>
+                  <p className="worker-job">{worker.job}</p>
+                </div>
+
+                <small className="worker-exp">{worker.exp} Experience</small>
+
+                <button className="book-btn">Book Now</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+=======
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
 
       <div className="workers-grid">
   {[
@@ -163,6 +202,10 @@ function Home() {
 
   ))}
 </div>
+<<<<<<< HEAD
+>>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
+=======
+>>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
       {/* ================= FOOTER ================= */}
       <footer className="footer">
 
