@@ -33,10 +33,10 @@ const taskSchema = new mongoose.Schema({
     type: String,
     default: "open"
   },
-  // ✅ ADDED THIS: Now Mongoose knows it is allowed to save the image path!
-  taskImage: {
+  // Now Mongoose knows it is allowed to save the image path!
+  taskImages: [{
     type: String
-  },
+  }],
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
