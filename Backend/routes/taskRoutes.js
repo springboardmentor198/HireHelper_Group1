@@ -142,7 +142,6 @@ router.put("/:id/complete", authMiddleware, async (req, res) => {
 
     task.status = "completed";
     await task.save();
-
     res.json({ msg: "Task marked as completed!", task });
   } catch (err) {
     console.error(err);
