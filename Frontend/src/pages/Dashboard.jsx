@@ -27,16 +27,8 @@ function Dashboard() {
         <Link style={linkStyle} to="feed">Feed</Link>
         <Link style={linkStyle} to="requests">Requests</Link>
         <Link style={linkStyle} to="my-requests">My Requests</Link>
-<<<<<<< HEAD
-<<<<<<< HEAD
         
         <Link style={linkStyle} to="my-tasks"> My Tasks</Link>
-=======
-        <Link style={linkStyle} to="my-tasks">My Tasks</Link>
->>>>>>> 442c2d2f73bac3395bbbcfc42f6f688dab31ce75
-=======
-        <Link style={linkStyle} to="my-tasks">My Tasks</Link>
->>>>>>> 9342359e0ad5a1640f6c35dc9ac2d44135747b18
         <Link style={linkStyle} to="settings">Settings</Link>
 
         <button
