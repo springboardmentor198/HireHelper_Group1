@@ -12,7 +12,7 @@ app.use(express.json());
 // ✅ THIS IS THE MAGIC LINE YOU NEEDED:
 // It tells Express to let the frontend access images inside the "uploads" folder
 app.use("/uploads", express.static("uploads"));
-
+app.use("/api/users", require("./routes/userRoutes"));
 // --- DATABASE CONNECTION ---
 connectDB();
 
