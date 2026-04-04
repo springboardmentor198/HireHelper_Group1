@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String
-    // ✅ REMOVED 'required: true' so Google users can be saved to the database!
+    // REMOVED 'required: true' so Google users can be saved to the database!
   },
   isVerified: {
     type: Boolean,
@@ -23,8 +23,16 @@ const userSchema = new mongoose.Schema({
   },
   otpExpires: {
     type: Date
+  },
+  phone: { 
+    type: String, default: "" 
+  },
+  profilePicture: { 
+    type: String, default: "" 
+  },
+  bio: { 
+    type: String, default: "" 
   }
-
 }, { timestamps: true });
 
 module.exports = mongoose.model("User", userSchema);
