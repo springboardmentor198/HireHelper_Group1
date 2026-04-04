@@ -22,12 +22,15 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Create Task with Image Upload
-// Added 'upload.single("taskImage")' middleware
-router.post("/", authMiddleware, upload.single("taskImage"), async (req, res) => {
+// ✅ Create Task with MULTIPLE Image Uploads
+// Changed 'upload.single' to 'upload.array' (allowing up to 5 images)
+router.post("/", authMiddleware, upload.array("taskImages", 5), async (req, res) => {
   try {
-    // 1. Verify the data actually arrived at the server
-    console.log(" Endpoint hit! Incoming data:", req.body); 
-    console.log(" File received:", req.file); // Log the file details
+    console.log("Endpoint hit! Incoming data:", req.body); 
+    console.log("Files received:", req.files); // Notice this is now req.files (plural)
+
+    // Loop through the uploaded files and create an array of their paths
+    const imagePaths = req.files ? req.files.map(file => `/uploads/${file.filename}`) : [];
 
     const task = await Task.create({
       title: req.body.title,
@@ -36,13 +39,17 @@ router.post("/", authMiddleware, upload.single("taskImage"), async (req, res) =>
       date: req.body.date,         
       time: req.body.time,         
       description: req.body.description,
+<<<<<<< HEAD
       //Save the file path to the database
       taskImage: req.file ? `/uploads/${req.file.filename}` : null,
+=======
+      // ✅ Save the array of file paths to the database
+      taskImages: imagePaths, 
+>>>>>>> Developer
       owner: req.userId  
     });
 
-    // 2. Verify Mongoose successfully created the object
-    console.log(" Task successfully saved to database:", task); 
+    console.log("Task successfully saved to database with multiple images!"); 
 
     res.json({
       msg: "Task created successfully",
@@ -50,17 +57,27 @@ router.post("/", authMiddleware, upload.single("taskImage"), async (req, res) =>
     });
 
   } catch (err) {
-    console.error(" Error saving task:", err);
+    console.error("Error saving task:", err);
     res.status(500).json({ msg: "Server error" });
   }
 });
 
-// Get ALL tasks for the Feed
-router.get("/", authMiddleware, async (req, res) => {
+// Feed tasks (exclude current user's tasks AND only show "open" tasks)
+router.get("/feed", authMiddleware, async (req, res) => {
   try {
     const ownerId = new mongoose.Types.ObjectId(req.userId);
+<<<<<<< HEAD
     // .sort({ createdAt: -1 }) puts the newest tasks at the top!
     const tasks = await Task.find().sort({ createdAt: -1 }); 
+=======
+    
+    //  status: "open" TO THE FILTER
+    const tasks = await Task.find({ 
+      owner: { $ne: ownerId }, 
+      status: "open" 
+    }).sort({ createdAt: -1 });
+    
+>>>>>>> Developer
     res.json(tasks);
   } catch (err) {
     console.error(err);
@@ -120,5 +137,43 @@ router.delete("/:id", authMiddleware, async (req, res) => {
     res.status(500).json({ msg: "Server error" });
   }
 });
+// GET SINGLE TASK DETAILS
+router.get("/:id", authMiddleware, async (req, res) => {
+  try {
+    // 1. Find the task by the ID in the URL
+    // We also use .populate() just in case your frontend wants to show the owner's name!
+    const task = await Task.findById(req.params.id).populate("owner", "name email");
 
+    // 2. If it doesn't exist, tell the frontend
+    if (!task) {
+      return res.status(404).json({ msg: "Task not found" });
+    }
+
+    // 3. Send the exact task data back to the frontend
+    res.json(task);
+
+  } catch (err) {
+    console.error("Error fetching single task:", err);
+    res.status(500).json({ msg: "Server error" });
+  }
+});
+// MARK TASK AS COMPLETED
+router.put("/:id/complete", authMiddleware, async (req, res) => {
+  try {
+    const task = await Task.findById(req.params.id);
+    if (!task) return res.status(404).json({ msg: "Task not found" });
+
+    // Make sure only the owner can complete it
+    if (task.owner.toString() !== req.userId) {
+      return res.status(401).json({ msg: "Not authorized" });
+    }
+
+    task.status = "completed";
+    await task.save();
+    res.json({ msg: "Task marked as completed!", task });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: "Server error" });
+  }
+});
 module.exports = router;
